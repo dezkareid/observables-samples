@@ -1,12 +1,14 @@
+const Rx = require('rx');
+
 function getObservableFromArray(array) {
 	return Rx.Observable.create(function(observer) {
-		if (array && arr instanceof array){
+		if (array && array instanceof Array){
 			array.forEach( item => observer.onNext(item));
 			observer.onCompleted();
 		} else {
 			observer.onError(new Error("Arreglo no valido"));
 		}	
-	}
+	});
 }
 
 var test = getObservableFromArray([1, 2, 3]);
